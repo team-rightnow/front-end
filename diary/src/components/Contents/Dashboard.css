@@ -1,0 +1,248 @@
+.dashboard-container {
+    max-width: 100%;
+    margin: 0;
+    position: relative;
+}
+
+.welcome-section {    
+    background: linear-gradient(to bottom, #CEDDE4, #FDFCDC);
+    padding: 80px 10px;
+    height: 350px;
+    text-align: left;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.welcome-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-left: 320px;
+    text-align: left;
+}
+
+.welcome-section p {
+    color: #666;
+    margin: 5px 0;
+    margin-left: 320px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.diary-buttons {
+    display: flex;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 50px auto 0;
+}
+
+.diary-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 35px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.diary-button:hover {
+    transform: translateY(-2px);
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+}
+
+.button-content {
+    flex: 1;
+    text-align: left;
+}
+
+.button-content h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.button-content p {
+    font-size: 14px;
+    color: #666;
+    margin: 4px 0 0;
+}
+
+.arrow {
+    font-size: 24px;
+    color: #666;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.stats-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    width: 87%;
+    margin: 0 auto;
+}
+
+.stats-header {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #666;
+    padding: 10px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.view-more {
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.temperature-display {
+    margin: 20px 0;
+}
+
+.period {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.temp {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.cel{
+    color: #F4A261;
+}
+
+.bottom-section {
+    width: 87%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px auto 0;
+    gap: 20px;
+}
+
+.character-section,
+.diary-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section-header {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 20px;
+    padding: 10px;
+    height: 50px;
+    border-bottom: 1px solid #666;
+}
+
+@media (max-width: 768px) {
+    .diary-buttons {
+        flex-direction: column;
+    }
+    
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .welcome-section {    
+        padding: 40px 20px;
+        height: auto;
+        min-height: 250px;
+    }
+
+    .welcome-section h1,
+    .welcome-section p {
+        margin-left: 20px;
+    }
+
+    .welcome-section h1 {
+        font-size: 20px;
+    }
+
+    .welcome-section p {
+        font-size: 14px;
+    }
+
+    .diary-buttons {
+        flex-direction: column;
+        gap: 20px;
+        max-width: 90%;
+        margin: 30px auto 0;
+    }
+
+    .diary-button {
+        padding: 20px;
+    }
+
+    .user-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+    }
+
+    .button-content h2 {
+        font-size: 16px;
+    }
+
+    .button-content p {
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .stats-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .stats-header,
+    .section-header {
+        width: 100%;
+        padding: 10px 0;
+        height: auto;
+    }
+
+    .bottom-section {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .character-section,
+    .diary-section {
+        padding: 20px;
+    }
+}

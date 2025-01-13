@@ -1,0 +1,62 @@
+.footer {
+    padding: 5%;
+    border-top: 1px solid #666;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    align-items: start;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.footer h2 {
+    color: #666;
+    font-size: clamp(14px, 2.5vw, 16px);
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.role-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.role-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.role-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    color: #666;
+    font-size: clamp(12px, 2vw, 14px);
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        grid-template-columns: auto 1fr;
+        justify-items: center;
+        gap: 60px;
+        padding: 50px;
+    }
+
+    .role-row {
+        grid-template-columns: 200px 1fr;
+        gap: 20px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .footer {
+        padding: 70px;
+        gap: 100px;
+    }
+
+    .role-group {
+        gap: 8px;
+    }
+}
