@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Writing1.css";
 import { Link } from "react-router-dom";
-import Writing from "./components/Contents/Writing";
-import Circle from "./components/Contents/Circle";
-import Square from "./components/Contents/Square";
+import Writing from "./Writing";
+import Circle from "./Circle";
+import Square from "./Square";
 
 function Writing1() {
   const [temp, setTemp] = useState(20);

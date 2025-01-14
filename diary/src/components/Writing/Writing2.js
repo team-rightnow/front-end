@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Writing2.css";
-import Paper from "./components/Contents/Paper";
-import Writing from "./components/Contents/Writing";
-import Square from "./components/Contents/Square";
-import Circle from "./components/Contents/Circle";
+import Paper from "./Paper";
+import Writing from "./Writing";
+import Square from "./Square";
+import Circle from "./Circle";
 
 function Writing2() {
   const [selectedPaper, setSelectedPaper] = useState(null);
