@@ -1,0 +1,12 @@
+.paper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    gap: 50px;
+}
+
+.paper-img {
+    width: 63px;
+    height: 80px;
+}
