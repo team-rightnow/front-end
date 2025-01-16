@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+.paper-button {
+  position: static;
+  width: 180px;
+  height: 230px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  margin: 15px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.paper-name {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: #000000;
+  margin: 20px 0 10px 0;
+}
+
+.paper-line {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: #767676;
+}

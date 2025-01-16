@@ -1,0 +1,24 @@
+.wr-box {
+    box-sizing: border-box;
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 670px;
+    height: 470px;
+    background: #ffffff;
+    border: 1px solid #dbdbdb;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .orange-back {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(90deg, #fdfcdc 0%, #f4a261 100%);
+  }
