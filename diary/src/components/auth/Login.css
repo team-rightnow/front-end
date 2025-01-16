@@ -1,0 +1,154 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #333;
+}
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.container {
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sub-title {
+  color: #666;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+}
+
+.checkbox-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.find-links {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.find-link {
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.find-link:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  width: 100%;
+  height: 48px;
+  background-color: #f4a460;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button:hover {
+  background-color: #e39850;
+}
+
+.signup-button {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #f4a460;
+  border-radius: 4px;
+  color: #f4a460;
+  background-color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.signup-button:hover {
+  background-color: #fff5ec;
+}
