@@ -62,12 +62,13 @@ body {
   left: 85%;
   top: 80%;
   width: 60px;
+  padding:0;
   height: 35px;
   background: #f4a261;
   border-radius: 10px;
   font-family: "Inter";
   font-weight: 300;
-  font-size: 12px;
+  font-size: 11px;
   color: #ffffff;
   cursor: pointer;
 }

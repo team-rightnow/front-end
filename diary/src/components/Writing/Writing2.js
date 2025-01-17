@@ -4,21 +4,44 @@ import Paper from "./Paper";
 import Writing from "./Writing";
 import Square from "./Square";
 import Circle from "./Circle";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Writing2() {
   const [selectedPaper, setSelectedPaper] = useState(null);
   const [selectedPaperData, setSelectedPaperData] = useState({});
 
+  const location = useLocation();
+  const temp = new URLSearchParams(location.search).get("temp");
+  const navigate = useNavigate();
+
+  const handleDiary = () => {
+    navigate(`../diary/DiaryWrite?temp=${temp}`);
+  };
+
+  const handleDual = () => {
+    navigate(`../diary/DualDiary?temp=${temp}`);
+  };
+
+  const handleQuestion = () => {
+    navigate(`../diary/QuestionDiary?temp=${temp}`);
+  };
+
+  const handleWritingPage = () => {
+    if(selectedPaper===0) handleDiary();
+    else if(selectedPaper===1) handleQuestion();
+    else if(selectedPaper===2) handleDual();
+  };
+
   const data = [
     {
-      img: <img src={require("./assets/book.png")} className="paper-img" />,
+      img: <img src={require("../../assets/book.png")} className="paper-img" />,
       name: "일상일기",
       line1: "오늘 하루 있었던 일들을",
       line2: "자유롭게 기록하고",
       line3: "마음껏 기록해 보세요!",
     },
     {
-      img: <img src={require("./assets/book2.png")} className="paper-img" />,
+      img: <img src={require("../../assets/book2.png")} className="paper-img" />,
       name: "질문일기",
       line1: "오늘 하루, 궁금한 질문에 답해보세요.",
       line2: "그 속에서 나만의 이야기를",
@@ -27,7 +50,7 @@ function Writing2() {
     {
       img: (
         <img
-          src={require("./assets/books.png")}
+          src={require("../../assets/books.png")}
           className="paper-img"
           style={{ width: "115px", height: "80px" }}
         />
@@ -63,7 +86,7 @@ function Writing2() {
             />
           ))}
         </div>
-        <button className="wr-orange-button">완료</button>
+        <button className="wr-orange-button" onClick={handleWritingPage}>완료</button>
       </Writing>
       <Square />
     </div>

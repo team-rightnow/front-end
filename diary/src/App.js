@@ -7,10 +7,11 @@ import Serviceintro from './components/Contents/Serviceintro';
 import Footer from './components/Footer/Footer';
 import Dashboard from './components/Contents/Dashboard';
 import Statistics from './components/Contents/Statistics';
-//import Login from './components/auth/Login';
-//import SignUp from './components/auth/SignUp';
-//import WritingSolo from '';
-//import Writing2 from '';
+import Writing1 from './components/Writing/Writing1';
+import Writing2 from './components/Writing/Writing2';
+import DiaryWrite from './components/diary/DiaryWrite';
+import DualDiary from './components/diary/DualDiaryWrite';
+import QuestionDiary from './components/diary/QuestionDiary';
 import CharacterRoom from './components/Contents/CharacterRoom';
 import CalendarPage from './components/Contents/CalendarPage';
 
@@ -46,10 +47,13 @@ function App() {
                       <>
                         <Route path="/" element={<Dashboard />}/>
                         <Route path="/Statistics" element={<Statistics />} />
-                        <Route path='/WritingSolo'/>
-                        <Route path='/Writing2'/>
+                        <Route path='/Writing/Writing1' element={<Writing1 />}/>
+                        <Route path='/Writing2' element={<Writing2 />}/>
                         <Route path='/Character' element={<CharacterRoom/>} />
                         <Route path='/DiaryRecord' element={<CalendarPage/>} />
+                        <Route path='/diary/DiaryWrite' element={<DiaryWrite />} />
+                        <Route path='/diary/DualDiary' element={<DualDiary />} />
+                        <Route path='/diary/QuestionDiary' element={<QuestionDiary />} />
                       </>
                     )}
                 </Routes>

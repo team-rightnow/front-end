@@ -1,24 +1,25 @@
 .wr-box {
-    box-sizing: border-box;
-    position: absolute;
-    top: 110px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    width: 670px;
-    height: 470px;
-    background: #ffffff;
-    border: 1px solid #dbdbdb;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  box-sizing: border-box;
+  position: relative;  /* absolute에서 relative로 변경 */
+  margin-bottom: 100px; /* footer와의 간격을 위해 추가 */
+  top: 70px;
+  width: 670px;
+  height: 470px;
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;  /* 중앙 정렬을 위해 추가 */
+  margin-right: auto; /* 중앙 정렬을 위해 추가 */
+}
   
   .orange-back {
-    position: relative;
+    position: absolute;
     width: 100%;
+    z-index: -10;
     height: 150px;
     background: linear-gradient(90deg, #fdfcdc 0%, #f4a261 100%);
   }

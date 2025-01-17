@@ -153,7 +153,7 @@ function Dashboard() {
         }
     };
 
-    const handleSoloWrite = () => navigate('/Writing1');
+    const handleSoloWrite = () => navigate('../Writing/Writing1');
     const handleStatsPage = () => navigate('/Statistics');
     const handleCharacterPage = () => navigate('/Character');
     const handleDiaryRecord = () => navigate('/Diaryrecord');

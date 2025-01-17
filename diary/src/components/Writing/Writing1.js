@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Writing1.css";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import Writing from "./Writing";
 import Circle from "./Circle";
 import Square from "./Square";
@@ -8,6 +8,12 @@ import Square from "./Square";
 function Writing1() {
   const [temp, setTemp] = useState(20);
   const [diffX, setDiffX] = useState(200);
+
+  const navigate = useNavigate();
+
+  const handleWriting2 = () => {
+    navigate(`/writing2?temp=${temp}`);
+  };
 
   return (
     <>
@@ -54,7 +60,7 @@ function Writing1() {
           ></div>
         </div>
         <h3 className="wr-h3">오늘은 {temp} ℃입니다.</h3>
-        <Link to="/writing2"><button className="wr-orange-button">다음</button></Link>
+        <button className="wr-orange-button" onClick={handleWriting2}>다음</button>
       </Writing>
     </>
   );

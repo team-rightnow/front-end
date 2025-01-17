@@ -1,6 +1,6 @@
 import "./MyPage.css";
 import { useState } from "react";
-import Profile from "./assets/defaultProfile.png";
+import Profile from "../../assets/defaultProfile.png";
 import List from "./List";
 
 function MyPage() {
