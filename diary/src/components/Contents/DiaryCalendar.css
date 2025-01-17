@@ -1,0 +1,31 @@
+.react-calendar {
+    border: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 100%; /* 부모 요소를 꽉 채움 */
+    max-width: 500px; /* 최대 너비 설정 */
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: #FF6666; /* 주말 색상 */
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #ccc; /* 이전/다음 달 날짜 흐리게 */
+}
+
+/* 점 중앙 정렬 */
+.dot-container {
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.dot {
+    margin-top: 5px;
+    width: 6px;
+    height: 6px;
+    background-color: #FF9B9B; /* 점 색상 */
+    border-radius: 50%;
+    display: inline-block;
+}

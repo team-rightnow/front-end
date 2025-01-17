@@ -13,6 +13,9 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Statistics.css";
+import sadImage from "../../assets/sad.png";
+import smileImage from "../../assets/smile.png";
+import madImage from "../../assets/mad.png";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -27,50 +30,62 @@ function Statistics() {
     const [hasData, setHasData] = useState(true);
 
     const fetchStatistics = async (date) => {
-       try {
+        try {
             const response = await fetch(`/api/statistic/${date}`, {
                 method: 'GET',
                 headers: {
-                  'Content-Type': 'application/json',
-                   // 인증 토큰을 헤더에 추가 (예: JWT)
-                  'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // JWT 토큰을 헤더에 추가
                 },
-              });
-              if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-              }
-              const data = await response.json();
-              return data.data;
-            } catch (error) {
-              console.error("통계 데이터 가져오기 오류:", error);
-              setHasData(false);
-              return null;
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP 오류! 상태: ${response.status}`);
             }
+    
+            const data = await response.json();
+            // 응답 구조가 예상과 일치하는지 확인
+            if (data.code === 1 && data.data) {
+                return data.data; // 온도 데이터 객체 반환
+            } else {
+                throw new Error('예상하지 못한 응답 구조');
+            }
+        } catch (error) {
+            console.error("통계 데이터 가져오기 오류:", error);
+            setHasData(false);
+            return null;
+        }
     };
 
     useEffect(() => {
         const fetchData = async () => {
-            const formattedDate = startDate.toISOString().split('T')[0];
-            const statisticsData = await fetchStatistics(formattedDate);
+            const formattedDate = startDate.toISOString().split('T')[0]; // 날짜를 'YYYY-MM-DD' 형태로 변환
+            const statisticsData = await fetchStatistics(formattedDate); // 데이터를 가져오기
             if (statisticsData) {
-                setAverageTemp(statisticsData.temperature.toString());
-                setHasData(true);
+                setAverageTemp(statisticsData.temperature.toString()); // 온도 값 설정
+                setHasData(true); // 데이터가 있음을 표시
             }
         };
-
-        fetchData();
-    }, [startDate]);
+        fetchData(); // 데이터 가져오기
+    }, [startDate]); // startDate가 변경될 때마다 실행
 
     const handleTabClick = (tab) => {
         setSelectedTab(tab);
         setShowCalendar(false);
-        setHasData(tab === "week");
+        if (tab === "week") {
+            setHasData(true);
+        } else {
+            setHasData(false);
+        }
     };
 
     const handleDateChange = async (dates) => {
-        const [start, end] = dates;
-        if (start && end) {
+        const [start] = dates; // 사용자가 선택한 시작 날짜
+        if (start) {
             setStartDate(start);
+            // 종료 날짜를 시작 날짜 + 6일로 설정 (주간 선택)
+            const end = new Date(start);
+            end.setDate(start.getDate() + 6);
             setEndDate(end);
 
             const formattedDate = start.toISOString().split('T')[0];
@@ -86,7 +101,7 @@ function Statistics() {
     };
 
     const weekDays = ['월', '화', '수', '목', '금', '토', '일'];
-    
+
     const data = {
         labels: weekDays,
         datasets: [{
@@ -125,9 +140,9 @@ function Statistics() {
                 }
             },
             y: {
-                display: false,
-                min: 0,
-                max: 40,
+                display: true,
+                min: -10,
+                max: 50,
                 grid: {
                     display: false
                 }
@@ -177,7 +192,7 @@ function Statistics() {
             if (!startDate || !endDate) {
                 return "날짜 미지정";
             }
-            return `${startDate.getFullYear()}.${String(startDate.getMonth() + 1).padStart(2, '0')}.${String(startDate.getDate()).padStart(2, '0')}~${endDate.getFullYear()}.${String(endDate.getMonth() + 1).padStart(2, '0')}.${String(endDate.getDate()).padStart(2, '0')}`;
+            return `${startDate.getFullYear()}.${String(startDate.getMonth() + 1).padStart(2, '0')}.${String(startDate.getDate()).padStart(2, '0')} ~ ${endDate.getFullYear()}.${String(endDate.getMonth() + 1).padStart(2, '0')}.${String(endDate.getDate()).padStart(2, '0')}`;
         } else if (selectedTab === "month") {
             return `${selectedMonth}월`;
         } else {
@@ -215,15 +230,15 @@ function Statistics() {
 
             <div className="mood-indicators">
                 <div className="mood-item">
-                    <span className="mood-emoji">😢</span>
+                    <img src={sadImage} alt="sad" className="mood-image" />
                     <span className="mood-count">: -</span>
                 </div>
                 <div className="mood-item">
-                    <span className="mood-emoji">😐</span>
+                    <img src={smileImage} alt="neutral" className="mood-image" />
                     <span className="mood-count">: -</span>
                 </div>
                 <div className="mood-item">
-                    <span className="mood-emoji">😊</span>
+                    <img src={madImage} alt="happy" className="mood-image" />
                     <span className="mood-count">: -</span>
                 </div>
                 {renderDateSelector()}

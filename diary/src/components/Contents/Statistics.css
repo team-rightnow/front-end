@@ -71,6 +71,14 @@
     font-size: 16px;
 }
 
+.mood-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
 .mood-count {
     font-size: 14px;
     color: #666;

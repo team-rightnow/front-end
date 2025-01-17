@@ -53,9 +53,8 @@ function CalendarPage() {
     return (
         <>
         <div className="yellow-banner" style={{ textAlign: 'center' }}>
-            <div style={{ height: '50px' }}></div>
             <h1 className="banner-title">나의 일기 기록</h1>
-            <div className="search-container" style={{ marginTop: '30px' }}>
+            <div className="search-container">
                 <input type="text" placeholder="내용을 검색해주세요."  className="search-input" style={{ width: '400px' }} />
                 <button className="search-button"></button>
             </div>

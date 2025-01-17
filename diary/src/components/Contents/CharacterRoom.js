@@ -28,7 +28,7 @@ function CharacterRoom() {
                 </div>
             </div>
 
-            <div className="character-section">
+            <div className="characterinfo-section">
                 {/* 왼쪽: 캐릭터 정보 */}
                 <div className="character-info" style={{ backgroundColor: selectedRoom }}>
                     <div className="character-image">

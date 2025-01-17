@@ -1,40 +1,62 @@
 import React, { useState } from 'react';
-import CalendarPage from './components/CalendarPage';
-import CharacterRoom from './components/CharacterRoom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Headernav from './components/Header/Headernav';
+import Headerintro from './components/Header/Headerintro';
+import Serviceintro from './components/Contents/Serviceintro';
+import Footer from './components/Footer/Footer';
+import Dashboard from './components/Contents/Dashboard';
+import Statistics from './components/Contents/Statistics';
+//import Login from './components/auth/Login';
+//import SignUp from './components/auth/SignUp';
+//import WritingSolo from '';
+//import Writing2 from '';
+import CharacterRoom from './components/Contents/CharacterRoom';
+import CalendarPage from './components/Contents/CalendarPage';
 
-const App = () => {
-    const [currentPage, setCurrentPage] = useState('character');
+function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const renderPage = () => {
-        if (currentPage === 'character') {
-            return <CharacterRoom />;
-        } else if (currentPage === 'calendar') {
-            return <CalendarPage />;
-        }
+    const handleLogin = () => {
+        setIsLoggedIn(true);
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
     };
 
     return (
-      <div className="App">
-        <header className="navbar">
-          <div className="logo">FeelsLike</div>
-          <nav>
-            <ul>
-              <li onClick={() => setCurrentPage('character')}>Character Room</li>
-              <li onClick={() => setCurrentPage('calendar')}>Calendar Page</li>
-              <li>About Us</li>
-              <li>Contact Us</li>
-              <li>Logout</li>
-              <li>My Page</li>
-            </ul>
-          </nav>
-        </header>
-        
-        <main>
-          {renderPage()}
-        </main>
-      </div>
+        <Router>
+            <div className="App">
+                <Headernav isLoggedIn={isLoggedIn} onLogout={handleLogout}/>
+                <Routes>
+                    {!isLoggedIn ? (
+                        <>
+                            <Route 
+                                path="/" 
+                                element={<>
+                                    <Headerintro onLogin={handleLogin}/> 
+                                    <Serviceintro />
+                                </>} 
+                            />
+                            {/*<Route path="/login" element={<Login />}/>
+                            <Route path="/Signup" element={<SignUp/>}/>*/}
+                        </>
+                    ) : (
+                      <>
+                        <Route path="/" element={<Dashboard />}/>
+                        <Route path="/Statistics" element={<Statistics />} />
+                        <Route path='/WritingSolo'/>
+                        <Route path='/Writing2'/>
+                        <Route path='/Character' element={<CharacterRoom/>} />
+                        <Route path='/DiaryRecord' element={<CalendarPage/>} />
+                      </>
+                    )}
+                </Routes>
+                <Footer isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+            </div>
+        </Router>
     );
-};
+}
 
 export default App;

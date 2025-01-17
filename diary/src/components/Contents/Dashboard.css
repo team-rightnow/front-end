@@ -139,6 +139,8 @@
 
 .bottom-section {
     width: 87%;
+    height: 70%;
+    min-height: 450px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 30px auto 0;
@@ -152,6 +154,16 @@
     padding: 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+
+.character-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    color: #888;
+    font-size: 16px;
+}
+
 
 .section-header {
     width: 95%;

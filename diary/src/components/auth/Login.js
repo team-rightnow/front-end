@@ -14,18 +14,6 @@ const Login = () => {
 
   return (
     <div className="wrapper">
-      <header className="header">
-        <div className="logo">FeelsLike</div>
-        <nav className="nav">
-          <a href="#" className="nav-link">
-            About Us
-          </a>
-          <a href="#" className="nav-link">
-            Contact Us
-          </a>
-        </nav>
-      </header>
-
       <div className="box-container">
         <div className="container">
           <h1 className="title">로그인</h1>
