@@ -12,7 +12,7 @@ function Writing1() {
   const navigate = useNavigate();
 
   const handleWriting2 = () => {
-    navigate(`/writing2?temp=${temp}`);
+    navigate(`../Writing/Writing2?temp=${temp}`);
   };
 
   return (
