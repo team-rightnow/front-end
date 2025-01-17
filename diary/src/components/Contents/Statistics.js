@@ -29,24 +29,27 @@ function Statistics() {
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
     const [hasData, setHasData] = useState(true);
 
-    const fetchStatistics = async (date) => {
+    // New state for mood counts
+    const [moodCounts, setMoodCounts] = useState({ sad: 0, smile: 0, mad: 0 });
+
+    const fetchStatistics = async (data) => {
         try {
-            const response = await fetch(`/api/statistic/${date}`, {
+            const response = await fetch(`/api/statistic/${data}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // JWT 토큰을 헤더에 추가
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
             });
-    
+
             if (!response.ok) {
                 throw new Error(`HTTP 오류! 상태: ${response.status}`);
             }
-    
+
             const data = await response.json();
-            // 응답 구조가 예상과 일치하는지 확인
+
             if (data.code === 1 && data.data) {
-                return data.data; // 온도 데이터 객체 반환
+                return data.data;
             } else {
                 throw new Error('예상하지 못한 응답 구조');
             }
@@ -59,15 +62,24 @@ function Statistics() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const formattedDate = startDate.toISOString().split('T')[0]; // 날짜를 'YYYY-MM-DD' 형태로 변환
-            const statisticsData = await fetchStatistics(formattedDate); // 데이터를 가져오기
+            const formattedDate = startDate.toISOString().split('T')[0];
+            const statisticsData = await fetchStatistics(formattedDate);
+
             if (statisticsData) {
-                setAverageTemp(statisticsData.temperature.toString()); // 온도 값 설정
-                setHasData(true); // 데이터가 있음을 표시
+                setAverageTemp(statisticsData.temperature.toString());
+
+                // Update mood counts
+                setMoodCounts({
+                    sad: statisticsData.sad || 0,
+                    smile: statisticsData.smile || 0,
+                    mad: statisticsData.mad || 0,
+                });
+
+                setHasData(true);
             }
         };
-        fetchData(); // 데이터 가져오기
-    }, [startDate]); // startDate가 변경될 때마다 실행
+        fetchData();
+    }, [startDate]);
 
     const handleTabClick = (tab) => {
         setSelectedTab(tab);
@@ -80,18 +92,27 @@ function Statistics() {
     };
 
     const handleDateChange = async (dates) => {
-        const [start] = dates; // 사용자가 선택한 시작 날짜
+        const [start] = dates;
         if (start) {
             setStartDate(start);
-            // 종료 날짜를 시작 날짜 + 6일로 설정 (주간 선택)
+
             const end = new Date(start);
             end.setDate(start.getDate() + 6);
             setEndDate(end);
 
             const formattedDate = start.toISOString().split('T')[0];
             const statisticsData = await fetchStatistics(formattedDate);
+
             if (statisticsData) {
                 setAverageTemp(statisticsData.temperature.toString());
+
+                // Update mood counts
+                setMoodCounts({
+                    sad: statisticsData.sad || 0,
+                    smile: statisticsData.smile || 0,
+                    mad: statisticsData.mad || 0,
+                });
+
                 setHasData(true);
             }
         } else {
@@ -231,15 +252,15 @@ function Statistics() {
             <div className="mood-indicators">
                 <div className="mood-item">
                     <img src={sadImage} alt="sad" className="mood-image" />
-                    <span className="mood-count">: -</span>
+                    <span className="mood-count">: {moodCounts.sad}</span>
                 </div>
                 <div className="mood-item">
                     <img src={smileImage} alt="neutral" className="mood-image" />
-                    <span className="mood-count">: -</span>
+                    <span className="mood-count">: {moodCounts.smile}</span>
                 </div>
                 <div className="mood-item">
                     <img src={madImage} alt="happy" className="mood-image" />
-                    <span className="mood-count">: -</span>
+                    <span className="mood-count">: {moodCounts.mad}</span>
                 </div>
                 {renderDateSelector()}
             </div>

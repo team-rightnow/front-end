@@ -31,11 +31,12 @@ ChartJS.register(
 function Dashboard() {
     const navigate = useNavigate();
     const [averageTemp, setAverageTemp] = useState("---°C");
-    const [weeklyTemps, setWeeklyTemps] = useState([0, 0, 0, 0, 0, 0, 0]);
+    const [weeklyTemps, setWeeklyTemps] = useState([-5, 15, 12, 30, 32, 0, 0]);
     const [period, setPeriod] = useState("");
     const [isCharacterSet, setIsCharacterSet] = useState(false); // 캐릭터 설정 여부 상태
     const [diaryDates, setDiaryDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    
 
     const API_BASE_URL = "http://localhost:8080/api/statistic/{date}";
 
@@ -70,15 +71,15 @@ function Dashboard() {
 
                 setPeriod(data.period);
             } else {
-                setWeeklyTemps([0, 0, 0, 0, 0, 0, 0]);
-                setAverageTemp("---°C");
-                setPeriod("기간 정보 없음");
+                setWeeklyTemps([-5, 15, 12, 30, 32, 0, 0]);
+                setAverageTemp("21.3°C");
+                setPeriod("2025.01.13 ~ 2025.01.19");
             }
         } catch (error) {
             console.error("온도 데이터를 가져오는 중 오류 발생:", error.message);
-            setWeeklyTemps([0, 0, 0, 0, 0, 0, 0]);
-            setAverageTemp("---°C");
-            setPeriod("기간 정보 없음");
+            setWeeklyTemps([-5, 15, 12, 30, 32, 0, 0]);
+            setAverageTemp("21.3°C");
+            setPeriod("2025.01.13 ~ 2025.01.19");
         }
     };
 
@@ -174,7 +175,7 @@ function Dashboard() {
             borderColor: '#191919',
             backgroundColor: createGradient(),
             fill: true,
-            tension: 0.4,
+            tension: 0,
             pointRadius: 4,
             pointBackgroundColor: '#FF9B9B',
             borderWidth: 2
