@@ -12,6 +12,8 @@ import Writing2 from './components/Writing/Writing2';
 import DiaryWrite from './components/diary/DiaryWrite';
 import DualDiary from './components/diary/DualDiaryWrite';
 import QuestionDiary from './components/diary/QuestionDiary';
+import Login from './components/auth/Login';
+import SignUp from './components/auth/SignUp';
 import CharacterRoom from './components/Contents/CharacterRoom';
 import CalendarPage from './components/Contents/CalendarPage';
 
@@ -40,15 +42,15 @@ function App() {
                                     <Serviceintro />
                                 </>} 
                             />
-                            {/*<Route path="/login" element={<Login />}/>
-                            <Route path="/Signup" element={<SignUp/>}/>*/}
+                            <Route path="/login" element={<Login />}/>
+                            <Route path="/Signup" element={<SignUp/>}/>
                         </>
                     ) : (
                       <>
                         <Route path="/" element={<Dashboard />}/>
                         <Route path="/Statistics" element={<Statistics />} />
                         <Route path='/Writing/Writing1' element={<Writing1 />}/>
-                        <Route path='/Writing2' element={<Writing2 />}/>
+                        <Route path='/Writing/Writing2' element={<Writing2 />}/>
                         <Route path='/Character' element={<CharacterRoom/>} />
                         <Route path='/DiaryRecord' element={<CalendarPage/>} />
                         <Route path='/diary/DiaryWrite' element={<DiaryWrite />} />

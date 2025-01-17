@@ -6,7 +6,7 @@ function Header_intro( {onLogin} ){
     const navigate = useNavigate();
     const handleStartClick = () => {
         onLogin(); // App.js에서 전달된 로그인 상태 변경 함수 호출
-        //navigate("/login");
+        navigate("/login");
     }
 
     return(
